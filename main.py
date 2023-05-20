@@ -23,7 +23,7 @@ with webdriver.Chrome() as driver:  # You'll need to have Chrome and Chromedrive
     soup = BeautifulSoup(page_source, "html.parser")
 
     # Find all <h3> elements
-    h3_elements = soup.find_all("h3")
+    h3_elements = soup.find_all(name="h3", class_="jsx-4245974604")
     movies = []
     # Print the text content of each <h3> element
     for element in h3_elements:
