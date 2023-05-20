@@ -10,25 +10,24 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 
 # Configure Selenium to use a web driver
-driver = webdriver.Chrome()  # You'll need to have Chrome and Chromedriver installed
+with webdriver.Chrome() as driver:  # You'll need to have Chrome and Chromedriver installed .
 
-# Load the webpage using Selenium
-url = "https://www.empireonline.com/movies/features/best-movies-2/"
-driver.get(url)
+    # Load the webpage using Selenium
+    url = "https://www.empireonline.com/movies/features/best-movies-2/"
+    driver.get(url)
 
-# Get the page source after dynamic content is loaded
-page_source = driver.page_source
+    # Get the page source after dynamic content is loaded
+    page_source = driver.page_source
 
-# Create a BeautifulSoup object to parse the HTML
-soup = BeautifulSoup(page_source, "html.parser")
+    # Create a BeautifulSoup object to parse the HTML
+    soup = BeautifulSoup(page_source, "html.parser")
 
-# Find all <h3> elements
-h3_elements = soup.find_all("h3")
-movies = []
-# Print the text content of each <h3> element
-for element in h3_elements:
-    movies.append(element.text)
-print(*movies[::-1], sep="\n")
-# Close the browser
-driver.quit()
+    # Find all <h3> elements
+    h3_elements = soup.find_all("h3")
+    movies = []
+    # Print the text content of each <h3> element
+    for element in h3_elements:
+        movies.append(element.text)
+    print(*movies[::-1], sep="\n")
+
 
